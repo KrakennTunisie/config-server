@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    restart: unless-stopped
+    networks:
+      - ms-net
+networks:
+  ms-net:
+    external: true
