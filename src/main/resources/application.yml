@@ -12,3 +12,8 @@ spring:
         native:
           search-locations: classpath:/Config
 
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
