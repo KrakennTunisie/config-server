@@ -3,7 +3,9 @@ spring:
     name: billing-server
 
   datasource:
-    url: jdbc:postgresql://billing-db:5432/billing_db
+    #  Docker  → url: jdbc:postgresql://billing-db:5432/billing_db
+    #  Local   → url: jdbc:postgresql://localhost:5432/billing_db
+    url: jdbc:postgresql://localhost:5432/billing_db
     username: postgres
     password: "postgres"
     driver-class-name: org.postgresql.Driver
