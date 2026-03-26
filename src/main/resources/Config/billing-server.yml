@@ -2,17 +2,22 @@ spring:
   application:
     name: billing-server
 
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 15MB
+
   datasource:
     #  Docker  → url: jdbc:postgresql://billing-db:5432/billing_db
     #  Local   → url: jdbc:postgresql://localhost:5432/billing_db
-    url: jdbc:postgresql://localhost:5432/billing_db
+    url: jdbc:postgresql://billing-db:5432/billing_db
     username: postgres
     password: "postgres"
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -25,17 +30,17 @@ spring:
     out-of-order: false
 
   storage:
-    type: local
+    type: database
 
     local:
       root-path: ./storage
-      public-base-url: http://billing-service:8081
+      public-base-url: http://localhost:8081
 
     cloud:
       provider: r2
 
-    postgres:
-      download-path: /api/documents
+    database:
+      download-path: /api/documents/
 
 
   r2:
