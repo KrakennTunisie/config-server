@@ -2,10 +2,15 @@ spring:
   application:
     name: billing-server
 
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "info,health"
   servlet:
     multipart:
-      max-file-size: 5MB
-      max-request-size: 15MB
+      max-file-size: 15MB
+      max-request-size: 45MB
 
   datasource:
     #  Docker  → url: jdbc:postgresql://billing-db:5432/billing_db
@@ -17,7 +22,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -30,11 +35,11 @@ spring:
     out-of-order: false
 
   storage:
-    type: database
+    type: local
 
     local:
       root-path: ./storage
-      public-base-url: http://billing-service:8081
+      public-base-url: http://billing-service:8081 #Docker -> billing-service
 
     cloud:
       provider: r2
