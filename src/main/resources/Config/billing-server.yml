@@ -39,7 +39,7 @@ spring:
 
     local:
       root-path: /app/storage  # en local ./storage
-      public-base-url: http://billing-server:8081  # en local http://localhost:8081
+      public-base-url: ""  # en local http://localhost:8081
 
     cloud:
       provider: r2
