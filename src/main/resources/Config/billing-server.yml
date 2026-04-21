@@ -38,8 +38,8 @@ spring:
     type: database
 
     local:
-      root-path: ./storage
-      public-base-url: http://billing-service:8081 #Docker -> billing-service
+      root-path: /app/storage  # en local ./storage
+      public-base-url: ""  # en local http://localhost:8081
 
     cloud:
       provider: r2
