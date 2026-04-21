@@ -15,14 +15,14 @@ spring:
   datasource:
     #  Docker  → url: jdbc:postgresql://billing-db:5432/billing_db
     #  Local   → url: jdbc:postgresql://localhost:5432/billing_db
-    url: jdbc:postgresql://billing-db:5432/billing-db
+    url: jdbc:postgresql://billing-db:5432/billing_db
     username: postgres
     password: "postgres"
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
