@@ -61,5 +61,17 @@ spring:
       base-url: https://api.exchangerate.host
       key: "c6563864692a96bdb440407d69a89f34"
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: wassefammar17@gmail.com
+    password: 'bgky dftw hogg ruat'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 server:
   port: 8081
