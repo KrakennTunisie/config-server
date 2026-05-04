@@ -9,8 +9,9 @@ spring:
           include: "info,health"
   servlet:
     multipart:
-      max-file-size: 15MB
-      max-request-size: 45MB
+      max-file-size: 1GB
+      max-request-size: 3GB
+      enabled: true
 
   datasource:
     #  Docker  → url: jdbc:postgresql://billing-db:5432/billing_db
@@ -22,13 +23,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
     baseline-on-migrate: false
     validate-on-migrate: true
@@ -38,7 +39,7 @@ spring:
     type: database
 
     local:
-      root-path: /app/storage  # en local ./storage
+      root-path: ./storage  # en local ./storage  /app/storage
       public-base-url: ""  # en local http://localhost:8081
 
     cloud:
@@ -56,5 +57,13 @@ spring:
     public-base-url: ${R2_PUBLIC_BASE_URL:}
     region: ${R2_REGION:auto}
 
+  exchange-rate:
+    api:
+      base-url: https://api.exchangerate.host
+      key: "c6563864692a96bdb440407d69a89f34"
+
 server:
   port: 8081
+  tomcat:
+    max-swallow-size: -1
+    max-http-form-post-size: -1
