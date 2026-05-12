@@ -16,14 +16,14 @@ spring:
   datasource:
     #  Docker  → url: jdbc:postgresql://billing-db:5432/billing_db
     #  Local   → url: jdbc:postgresql://localhost:5432/billing_db
-    url: jdbc:postgresql://billing-db:5432/billing_db
+    url:  jdbc:postgresql://billing-db:5432/billing_db
     username: postgres
     password: "postgres"
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -39,8 +39,8 @@ spring:
     type: database
 
     local:
-      root-path: ./storage  # en local ./storage  /app/storage
-      public-base-url: ""  # en local http://localhost:8081
+      root-path: /app/storage  # en local ./storage
+      public-base-url: " "  # en local http://localhost:8081
 
     cloud:
       provider: r2
@@ -60,7 +60,25 @@ spring:
   exchange-rate:
     api:
       base-url: https://api.exchangerate.host
-      key: "c6563864692a96bdb440407d69a89f34"
+      key: "dae1833bddbe90ef71015cfccdbc5e59"
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: wassefammar17@gmail.com
+    password: 'bgky dftw hogg ruat'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 server:
   port: 8081
