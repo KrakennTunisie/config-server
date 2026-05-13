@@ -35,7 +35,7 @@ spring:
     out-of-order: false
 
   storage:
-    type: database
+    type: local
 
     local:
       root-path: /app/storage  # en local ./storage
@@ -59,7 +59,7 @@ spring:
   exchange-rate:
     api:
       base-url: https://api.exchangerate.host
-      key: "c6563864692a96bdb440407d69a89f34"
+      key: "5c04d0affdd6215d121be04f9698ef46"
 
   mail:
     host: smtp.gmail.com
