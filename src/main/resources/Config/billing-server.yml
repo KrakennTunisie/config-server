@@ -28,14 +28,14 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
     baseline-on-migrate: false
     validate-on-migrate: true
     out-of-order: false
 
   storage:
-    type: local
+    type: database
 
     local:
       root-path: /app/storage  # en local ./storage
@@ -59,7 +59,7 @@ spring:
   exchange-rate:
     api:
       base-url: https://api.exchangerate.host
-      key: "5c04d0affdd6215d121be04f9698ef46"
+      key: "dae1833bddbe90ef71015cfccdbc5e59"
 
   mail:
     host: smtp.gmail.com
@@ -81,3 +81,6 @@ spring:
 
 server:
   port: 8081
+  tomcat:
+    max-swallow-size: -1
+    max-http-form-post-size: -1
