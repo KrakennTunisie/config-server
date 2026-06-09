@@ -9,14 +9,13 @@ spring:
           include: "info,health"
   servlet:
     multipart:
-      max-file-size: 1GB
-      max-request-size: 3GB
-      enabled: true
+      max-file-size: 15MB
+      max-request-size: 45MB
 
   datasource:
     #  Docker  → url: jdbc:postgresql://billing-db:5432/billing_db
     #  Local   → url: jdbc:postgresql://localhost:5432/billing_db
-    url:  jdbc:postgresql://billing-db:5432/billing_db
+    url: jdbc:postgresql://billing-db:5432/billing_db
     username: postgres
     password: "postgres"
     driver-class-name: org.postgresql.Driver
@@ -75,7 +74,7 @@ spring:
             enable: true
 
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     port: 5672
     username: guest
     password: guest
