@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/kerp
+
   cloud:
     gateway:
       server:
@@ -8,7 +14,14 @@ spring:
               uri: lb://billing-server
               predicates:
                 - Path=/api/**
+              filters:
+                - RemoveRequestHeader=Origin
+                - RemoveRequestHeader=Authorization
 
   http:
     client:
       connect-timeout: 3000
+
+logging:
+  level:
+    org.springframework.security: DEBUG
