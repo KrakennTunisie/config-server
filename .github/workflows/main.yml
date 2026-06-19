@@ -15,4 +15,4 @@ jobs:
       SERVER_USER: ${{ secrets.SERVER_USER }}
       SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
       PRO_SERVER_IP: ${{secrets.PRO_SERVER_IP}}
-      PROD_SERVER_PASSWORD: ${{secrets.PROD_SERVER_PASSWORD}}
+      PROD_SSH_PRIVATE_KEY: ${{secrets.PROD_SSH_PRIVATE_KEY}}
