@@ -14,10 +14,6 @@ spring:
               uri: lb://billing-server
               predicates:
                 - Path=/api/**
-              filters:
-                - RemoveRequestHeader=Origin
-                - RemoveRequestHeader=Authorization
-
   http:
     client:
       connect-timeout: 3000
