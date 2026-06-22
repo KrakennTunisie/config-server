@@ -39,7 +39,7 @@ spring:
 
     local:
       root-path: /app/storage  # en local ./storage
-      public-base-url: ""  # en local http://localhost:8081
+      public-base-url: "" # en local http://localhost:8081
 
     cloud:
       provider: r2
@@ -59,7 +59,7 @@ spring:
   exchange-rate:
     api:
       base-url: https://api.exchangerate.host
-      key: "dae1833bddbe90ef71015cfccdbc5e59"
+      key: "0d683bc60391df53fae0d3d7c1fc74c4"
 
   mail:
     host: smtp.gmail.com
