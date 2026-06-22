@@ -11,3 +11,12 @@ springdoc:
     path: /swagger-ui.html
     csrf:
       enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
