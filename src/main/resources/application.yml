@@ -11,6 +11,8 @@ spring:
       server:
         native:
           search-locations: classpath:/Config
+  config:
+    import: "optional:configserver:"
 
 eureka:
   client:

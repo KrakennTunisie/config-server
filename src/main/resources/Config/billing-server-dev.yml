@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/billing_db
+    username: postgres
+    password: "postgres"
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  flyway:
+    enabled: false
+    baseline-on-migrate: false
+  storage:
+    type: database
+    local:
+      root-path: ./storage
+      public-base-url: http://localhost:8081
+    cloud:
+      provider: r2
+    database:
+      download-path: /api/documents/
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    root: info
