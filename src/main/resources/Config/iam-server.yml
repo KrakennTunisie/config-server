@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: iam-server
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+server:
+  port: 8085
+
+keycloak:
+  realm: kerp
+  client-id: iam-server-client
+
