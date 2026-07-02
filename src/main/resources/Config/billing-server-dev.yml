@@ -1,13 +1,20 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/billing_db
+    url: jdbc:postgresql://localhost:5432/billing_service_db
     username: postgres
-    password: "postgres"
+    password: "Mes2021**"
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+    validate-on-migrate: true
+    out-of-order: false
 
   storage:
     type: database
