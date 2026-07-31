@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: false
 
   flyway:
@@ -24,7 +24,7 @@ spring:
     cloud:
       provider: r2
     database:
-      download-path: /api/documents/
+      download-path: /api/billing/documents/
   rabbitmq:
     host: rabbitmq
     port: 5672

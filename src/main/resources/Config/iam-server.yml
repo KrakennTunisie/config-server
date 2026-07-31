@@ -8,9 +8,14 @@ spring:
     open-in-view: false
 
 server:
+  context-path: /api/iam
   port: 8085
 
 keycloak:
   realm: kerp
   client-id: iam-server-client
+
+logging:
+  level:
+    org.springframework.security: TRACE
 

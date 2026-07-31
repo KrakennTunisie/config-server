@@ -1,6 +1,6 @@
 spring:
   application:
-    name: billing-server
+    name: notification-service
 
   management:
     endpoints:
@@ -26,24 +26,11 @@ spring:
     validate-on-migrate: true
     out-of-order: false
 
-  r2:
-    account-id: ${R2_ACCOUNT_ID}
-    access-key-id: ${R2_ACCESS_KEY_ID}
-    secret-access-key: ${R2_SECRET_ACCESS_KEY}
-    bucket-name: ${R2_BUCKET_NAME}
-    public-base-url: ${R2_PUBLIC_BASE_URL:}
-    region: ${R2_REGION:auto}
-
-  exchange-rate:
-    api:
-      base-url: https://api.exchangerate.host
-      key: "e4e119ef94a7b2c5514cf314fec7cd52"
-
   mail:
     host: smtp.gmail.com
     port: 587
     username: wassefammar17@gmail.com
-    password: ${GMAILPASSWORD}
+    password: cakm ydtp nlqe vwif
     properties:
       mail:
         smtp:
@@ -51,7 +38,8 @@ spring:
           starttls:
             enable: true
 
-server:
-  tomcat:
-    max-swallow-size: -1
-    max-http-form-post-size: -1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

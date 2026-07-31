@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/billing_db
+    url: jdbc:postgresql://localhost:5432/notification_service_db
     username: postgres
-    password: "postgres"
+    password: "Mes2021**"
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -16,43 +16,42 @@ spring:
     validate-on-migrate: true
     out-of-order: false
 
-  storage:
-    type: database
-    local:
-      root-path: ./storage
-      public-base-url: http://localhost:8081
-    cloud:
-      provider: r2
-    database:
-      download-path: /api/billing/documents/
-
   Kafka:
+    bootstrap-servers: localhost:9092
+
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
     consumer:
-      group-id: billing-service
+      group-id: notification-service
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-
       properties:
         spring.json.trusted.packages: "*"
-        spring.json.value.default.type: com.example.billingservice.infrastructure.out.persistance.dto.MailResultDTO
+        spring.json.value.default.type: com.kerp.notificationservice.domain.model.MailJob
         spring.json.use.type.headers: false
 
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  feign:
+    client:
+      config:
+        billing-service:
+          connect-timeout: 3000
+          read-timeout: 5000
+          logger-level: basic
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
 server:
   servlet:
-    context-path: /api/billing
-  port: 8081
-
-logging:
-  level:
-    org.springframework.web: DEBUG
-    root: info
+    context-path: /api/notification-service
+  port: 8086
