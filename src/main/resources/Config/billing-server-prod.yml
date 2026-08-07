@@ -8,9 +8,8 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: false
-  flyway:
-    enabled: false
-    baseline-on-migrate: false
+
+
   storage:
     type: database
     local:
@@ -19,15 +18,17 @@ spring:
     cloud:
       provider: r2
     database:
-      download-path: /api/documents/
+      download-path: /api/billing/documents/
+
+  kafka:
+    bootstrap-servers: kafka:9092
+
   rabbitmq:
-    host: rabbitmq
+    host: rabbit-mq
     port: 5672
     username: ${RABBITMQ_USER}
     password: ${RABBITMQ_PASSWORD}
 
-server:
-  port: 8081
 
 logging:
   level:

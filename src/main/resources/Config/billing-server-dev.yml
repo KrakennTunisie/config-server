@@ -14,6 +14,16 @@ spring:
     baseline-on-migrate: true
     validate-on-migrate: true
     out-of-order: false
+
+  kafka:
+    bootstrap-servers: localhost:9094
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
+
   storage:
     type: database
     local:
@@ -22,15 +32,8 @@ spring:
     cloud:
       provider: r2
     database:
-      download-path: /api/documents/
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+      download-path: /api/billing/documents/
 
-server:
-  port: 8081
 
 logging:
   level:

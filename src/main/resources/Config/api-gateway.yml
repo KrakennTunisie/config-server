@@ -4,10 +4,15 @@ spring:
       server:
         webmvc:
           routes:
+            - id: iam
+              uri: lb://IAM-SERVER
+              predicates:
+                - Path=/api/iam/**
+
             - id: billing-server
               uri: lb://billing-server
               predicates:
-                - Path=/api/**
+                - Path=/api/billing/**
   http:
     client:
       connect-timeout: 3000

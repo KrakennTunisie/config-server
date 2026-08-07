@@ -6,11 +6,167 @@ spring:
       hibernate:
         format_sql: true
     open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    out-of-order: false
 
-server:
-  port: 8085
+  Kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 keycloak:
   realm: kerp
   client-id: iam-server-client
+
+kerp:
+  security:
+    clients:
+
+      - client-id: billing-service
+        permissions:
+          - name: BILLING_READ
+            description: View invoices
+          - name: BILLING_CREATE
+            description: Create invoices
+          - name: BILLING_UPDATE
+            description: Update invoices
+          - name: BILLING_DELETE
+            description: Delete invoices
+          - name: BILLING_EXPORT
+            description: Export invoices
+
+          - name: PURCHASE_ORDER_READ
+            description: View purchase orders
+          - name: PURCHASE_ORDER_CREATE
+            description: Create purchase orders
+          - name: PURCHASE_ORDER_UPDATE
+            description: Update purchase orders
+          - name: PURCHASE_ORDER_DELETE
+            description: Delete purchase orders
+          - name: PURCHASE_ORDER_APPROVE
+            description: Approve purchase orders
+
+          - name: CUSTOMER_CREDIT_NOTE_READ
+            description: View customer credit notes
+          - name: CUSTOMER_CREDIT_NOTE_CREATE
+            description: Create customer credit notes
+          - name: CUSTOMER_CREDIT_NOTE_UPDATE
+            description: Update customer credit notes
+          - name: CUSTOMER_CREDIT_NOTE_DELETE
+            description: Delete customer credit notes
+
+          - name: SUPPLIER_CREDIT_NOTE_READ
+            description: View supplier credit notes
+          - name: SUPPLIER_CREDIT_NOTE_CREATE
+            description: Create supplier credit notes
+          - name: SUPPLIER_CREDIT_NOTE_UPDATE
+            description: Update supplier credit notes
+          - name: SUPPLIER_CREDIT_NOTE_DELETE
+            description: Delete supplier credit notes
+
+          - name: PAYMENT_READ
+            description: View payments
+          - name: PAYMENT_CREATE
+            description: Register payments
+          - name: PAYMENT_UPDATE
+            description: Update payments
+          - name: PAYMENT_DELETE
+            description: Delete payments
+          - name: PAYMENT_VALIDATE
+            description: Validate payments
+
+          - name: SETTINGS_READ
+            description: View billing settings
+          - name: SETTINGS_UPDATE
+            description: Update billing settings
+
+          - name: TVA_RATE_READ
+            description: View VAT rates
+          - name: TVA_RATE_CREATE
+            description: Create VAT rates
+          - name: TVA_RATE_UPDATE
+            description: Update VAT rates
+          - name: TVA_RATE_DELETE
+            description: Delete VAT rates
+
+      - client-id: iam-service
+        permissions:
+
+          # Users
+          - name: USER_READ
+            description: View users
+
+          - name: USER_CREATE
+            description: Create users
+
+          - name: USER_UPDATE
+            description: Update users
+
+          - name: USER_DELETE
+            description: Delete users
+
+          - name: USER_ENABLE
+            description: Enable or disable users
+
+          - name: USER_RESET_PASSWORD
+            description: Reset user passwords
+
+          - name: USER_ASSIGN_ROLE
+            description: Assign roles to users
+
+          - name: USER_REMOVE_ROLE
+            description: Remove roles from users
+
+          # Roles
+          - name: ROLE_READ
+            description: View business roles
+
+          - name: ROLE_CREATE
+            description: Create business roles
+
+          - name: ROLE_UPDATE
+            description: Update business roles
+
+          - name: ROLE_DELETE
+            description: Delete business roles
+
+          - name: ROLE_ASSIGN_PERMISSION
+            description: Assign permissions to business roles
+
+          - name: ROLE_REMOVE_PERMISSION
+            description: Remove permissions from business roles
+
+          # Permissions
+          - name: PERMISSION_READ
+            description: View available permissions
+
+          # Clients
+          - name: CLIENT_READ
+            description: View registered clients
+
+          # Audit
+          - name: AUDIT_LOG_READ
+            description: View audit logs
+
+          # Administration
+          - name: ADMIN_ACCESS
+            description: Full IAM administration
+
+logging:
+  level:
+    org.springframework.security: TRACE
+
+
+server:
+  servlet:
+     context-path: /api/iam
+  port: 8085
+
+
+
+
 

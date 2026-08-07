@@ -2,19 +2,20 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/iam_db
     username: postgres
-    password: postgres
+    password: "postgres"
     driver-class-name: org.postgresql.Driver
-    jpa:
-      hibernate:
-        ddl-auto: update
-        show-sql: true
-  flyway:
-    enabled: false
-    baseline-on-migrate: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:29092
 
 keycloak:
   auth-server-url: http://localhost:8080
-  client-secret: dev-secret-non-sensible
+  client-secret: TGNBK5j6PBWKP1MIXgorOcuX8KCXYPSd
+
 
 logging:
   level:
