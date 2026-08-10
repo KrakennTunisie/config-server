@@ -18,12 +18,6 @@ spring:
   kafka:
     bootstrap-servers: localhost:9094
 
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: ${RABBITMQ_USER}
-    password: ${RABBITMQ_PASSWORD}
-
   storage:
     type: database
     local:

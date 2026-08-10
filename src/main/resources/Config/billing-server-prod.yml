@@ -23,11 +23,6 @@ spring:
   kafka:
     bootstrap-servers: kafka:9092
 
-  rabbitmq:
-    host: rabbit-mq
-    port: 5672
-    username: ${RABBITMQ_USER}
-    password: ${RABBITMQ_PASSWORD}
 
 
 logging:
