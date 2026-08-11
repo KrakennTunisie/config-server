@@ -34,7 +34,7 @@ spring:
     password: ${RABBITMQ_PASSWORD}
 
 keycloak:
-  url: "https://keycloak:8080/keycloak/realms/kerp"
+  url: "https://kerp-web.duckdns.org/keycloak/realms/kerp"
 
 feign:
   client:
