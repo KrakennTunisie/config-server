@@ -2,18 +2,6 @@ spring:
   application:
     name: billing-server
 
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "info,health"
-
-  servlet:
-    context-path: /api/billing
-    multipart:
-      max-file-size: 15MB
-      max-request-size: 45MB
-
   jpa:
     properties:
       hibernate:
@@ -50,8 +38,37 @@ spring:
           auth: true
           starttls:
             enable: true
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    consumer:
+      group-id: billing-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: com.example.billingservice.infrastructure.out.persistance.dto.MailResultDTO
+        spring.json.use.type.headers: false
 
 server:
+  servlet:
+    context-path: /api/billing
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 45MB
+  port: 8081
   tomcat:
     max-swallow-size: -1
     max-http-form-post-size: -1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "info,health"
+  health:
+    mail:
+      enabled: false

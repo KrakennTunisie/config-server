@@ -1,17 +1,11 @@
 spring:
-  security:
-      oauth2:
-        resourceserver:
-          jwt:
-            issuer-uri: http://localhost:8080/realms/kerp
-
   datasource:
     url: jdbc:postgresql://localhost:5432/iam_db
     username: postgres
-    password: "Mes2021**"
+    password: "postgres"
     driver-class-name: org.postgresql.Driver
-    jpa:
-      hibernate:
+  jpa:
+    hibernate:
         ddl-auto: validate
         show-sql: true
   flyway:

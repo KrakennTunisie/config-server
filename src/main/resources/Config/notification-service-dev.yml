@@ -1,13 +1,13 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/notification_service_db
-    username: postgres
-    password: "Mes2021**"
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+      show-sql: true
 
   flyway:
     enabled: true
@@ -43,16 +43,26 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    username: guest
-    password: guest
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
 
-  feign:
-    client:
-      config:
-        billing-service:
-          connect-timeout: 3000
-          read-timeout: 5000
-          logger-level: basic
+keycloak:
+  url: "http://localhost:8080/realms/kerp"
+
+feign:
+  client:
+    config:
+      billing-service:
+        connect-timeout: 3000
+        read-timeout: 5000
+        logger-level: basic
+
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    root: info
+
 
 eureka:
   client:
@@ -63,10 +73,3 @@ server:
     context-path: /api/notification-service
   port: 8086
 
-keycloak:
-  issuer-uri: http://localhost:8080/realms/kerp
-
-logging:
-  level:
-    org.springframework.messaging: TRACE
-    org.springframework.web.socket: TRACE

@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://notification-db:5432/notification_service_db
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      show-sql: true
+
+
+  kafka:
+    bootstrap-servers: kafka:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    consumer:
+      group-id: notification-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: com.kerp.notificationservice.domain.model.MailJob
+        spring.json.use.type.headers: false
+
+
+  rabbitmq:
+    host: rabbit-mq
+    port: 5672
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
+
+keycloak:
+  url: "https://kerp-web.duckdns.org/keycloak/realms/kerp"
+
+feign:
+  client:
+    config:
+      billing-service:
+        connect-timeout: 3000
+        read-timeout: 5000
+        logger-level: basic
+
+
