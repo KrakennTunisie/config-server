@@ -9,7 +9,7 @@ spring:
           include: "info,health"
 
   servlet:
-    context-path: /api/billing
+    context-path: /api/notification-service
     multipart:
       max-file-size: 15MB
       max-request-size: 45MB

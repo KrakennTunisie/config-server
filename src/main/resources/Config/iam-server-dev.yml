@@ -1,4 +1,10 @@
 spring:
+  security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:8080/realms/kerp
+
   datasource:
     url: jdbc:postgresql://localhost:5432/iam_db
     username: postgres
@@ -19,6 +25,11 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
+        spring.json.type.mapping: >
+          mailRequest:com.krakennTunisie.IAM_server.infrastructure.out.persistence.dto.MailRequest,
+          auditEvent:com.krakennTunisie.IAM_server.infrastructure.out.messaging.AuditEvent
 
 keycloak:
   auth-server-url: http://localhost:8080
@@ -26,9 +37,19 @@ keycloak:
 
 
 kerp:
+  bootstrap:
+    admin:
+      enabled: true
+      username: admin
+      email: wassefammar17@gmail.com
+      firstname: System
+      lastname: Administrator
+      phone-number: "+21600000000"
+      password: Admin@123
+      status: ACTIVE
+      role: Admin
   security:
     clients:
-
       - client-id: billing-service
         permissions:
           - name: BILLING_READ

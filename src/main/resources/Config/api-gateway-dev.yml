@@ -1,12 +1,21 @@
 #spring:
-  #security:
-    #oauth2:
-      #resourceserver:
-        #jwt:
-          #issuer-uri: http://localhost:8080/realms/kerp
-
+#  cloud:
+#    gateway:
+#      default-filters:
+#        - TokenRelay
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/kerp
+keycloak:
+  issuer-uri: http://localhost:8080/realms/kerp
 logging:
   level:
+    root: info
     org.springframework.security: DEBUG
     org.springframework.cloud.gateway: DEBUG
-    root: info
+    org.springframework.web.reactive: DEBUG
+    org.springframework.web.reactive.socket: DEBUG
+    reactor.netty.http.client: DEBUG
+    reactor.netty.http.server: DEBUG

@@ -1,18 +1,38 @@
 spring:
   cloud:
     gateway:
-      server:
-        webmvc:
-          routes:
-            - id: iam
-              uri: lb://IAM-SERVER
-              predicates:
-                - Path=/api/iam/**
+      routes:
+        - id: iam
+          uri: lb://IAM-SERVER
+          predicates:
+            - Path=/api/iam/**
 
-            - id: billing-server
-              uri: lb://billing-server
-              predicates:
-                - Path=/api/billing/**
+        - id: billing-server
+          uri: lb://billing-server
+          predicates:
+            - Path=/api/billing/**
+
+        # SockJS handshake info endpoint - plain HTTP, must come before the ws catch-all
+        - id: notification-service-ws-info
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notification-service/ws/info
+
+        # Actual websocket upgrade
+        - id: notification-service-ws
+          uri: lb:ws://notification-service
+          predicates:
+            - Path=/api/notification-service/ws/**
+
+        - id: notification-service-http
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notification-service/**
+
+        - id: audit-service
+          uri: lb://audit-service
+          predicates:
+            - Path=/api/audit-service/**
   http:
     client:
       connect-timeout: 3000
