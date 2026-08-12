@@ -7,6 +7,9 @@ spring:
       web:
         exposure:
           include: "info,health"
+    health:
+      mail:
+        enabled: false
 
   jpa:
     properties:
