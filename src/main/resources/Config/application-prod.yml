@@ -18,3 +18,7 @@ management:
   endpoint:
     gateway:
       enabled: true
+
+  health:
+    mail:
+      enabled: false
