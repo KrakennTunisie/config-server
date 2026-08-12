@@ -4,7 +4,8 @@
      # resourceserver:
         #jwt:
           #issuer-uri: http://keycloak:8080/realms/kerp
-
+keycloak:
+  issuer-uri: ${KEYCLOAK_URL}
 logging:
   level:
     org.springframework.security: WARN
