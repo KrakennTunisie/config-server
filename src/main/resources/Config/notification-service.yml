@@ -48,3 +48,8 @@ management:
   health:
     mail:
       enabled: false
+
+server:
+  servlet:
+    context-path: /api/notification-service
+  port: 8086
