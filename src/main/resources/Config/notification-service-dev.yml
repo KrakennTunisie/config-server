@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/notification_service_db
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    username: postgres
+    password: "Mes2021**"
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -43,8 +43,8 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    username: ${RABBITMQ_USER}
-    password: ${RABBITMQ_PASSWORD}
+    username: guest
+    password: guest
 
 keycloak:
   url: "http://localhost:8080/realms/kerp"
