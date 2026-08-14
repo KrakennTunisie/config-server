@@ -23,6 +23,17 @@ keycloak:
   client-id: iam-server-client
 
 kerp:
+  bootstrap:
+    admin:
+      enabled: true
+      username: admin
+      email: wassefammar17@gmail.com
+      firstname: System
+      lastname: Administrator
+      phone-number: "+21600000000"
+      password: Admin@123
+      status: ACTIVE
+      role: Admin
   security:
     clients:
 
@@ -92,6 +103,10 @@ kerp:
             description: Update VAT rates
           - name: TVA_RATE_DELETE
             description: Delete VAT rates
+
+          # Administration
+          - name: ADMIN_ACCESS
+            description: Full Billing administration
 
       - client-id: iam-service
         permissions:
