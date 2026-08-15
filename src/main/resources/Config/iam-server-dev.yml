@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/iam_db
     username: postgres
-    password: "Mes2021**"
+    password: "postgres"
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -16,18 +16,12 @@ spring:
     out-of-order: false
 
   Kafka:
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      properties:
-        spring.json.add.type.headers: true
-        spring.json.type.mapping: >
-          mailRequest:com.krakennTunisie.IAM_server.infrastructure.out.persistence.dto.MailRequest,
-          auditEvent:com.krakennTunisie.IAM_server.infrastructure.out.messaging.AuditEvent
+    bootstrap-servers: localhost:29092
+
 
 keycloak:
   auth-server-url: http://localhost:8080
-  client-secret: JIBhU42r1Mgb2kP94YlYEHWtDw6kxZDU
+  client-secret: TGNBK5j6PBWKP1MIXgorOcuX8KCXYPSd
 
 
 kerp:

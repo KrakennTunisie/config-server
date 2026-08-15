@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/notification_service_db
     username: postgres
-    password: "Mes2021**"
+    password: "postgres"
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -17,7 +17,7 @@ spring:
     out-of-order: false
 
   Kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:29092
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
