@@ -27,5 +27,5 @@ spring:
 
 logging:
   level:
-    org.springframework.web: WARN
-    root: WARN
+    org.springframework.web: INFO
+    root: INFO

@@ -9,5 +9,5 @@ keycloak:
 logging:
   level:
     org.springframework.security: WARN
-    org.springframework.cloud.gateway: WARN
-    root: WARN
+    org.springframework.cloud.gateway: INFO
+    root: INFO

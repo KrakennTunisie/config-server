@@ -25,7 +25,7 @@ spring:
   exchange-rate:
     api:
       base-url: https://api.exchangerate.host
-      key: "e4e119ef94a7b2c5514cf314fec7cd52"
+      key: "c6563864692a96bdb440407d69a89f34"
 
   mail:
     host: smtp.gmail.com
