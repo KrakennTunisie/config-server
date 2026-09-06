@@ -42,16 +42,23 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
+        spring.json.type.mapping: >
+          notificationEvent:com.example.billingservice.infrastructure.out.messaging.NotificationEvent,
+          mailRequest:com.example.billingservice.infrastructure.out.persistance.dto.MailRequest,
+          auditEvent:com.example.billingservice.infrastructure.out.messaging.AuditEvent
 
     consumer:
       group-id: billing-service
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
         spring.json.trusted.packages: "*"
-        spring.json.value.default.type: com.example.billingservice.infrastructure.out.persistance.dto.MailResultDTO
-        spring.json.use.type.headers: false
+        spring.json.use.type.headers: true
+        spring.json.type.mapping: >
+          mailResult:com.example.billingservice.infrastructure.out.persistance.dto.MailResultDTO
 
 server:
   servlet:
