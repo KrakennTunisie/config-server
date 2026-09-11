@@ -5,9 +5,9 @@ spring:
         jwt:
           issuer-uri: http://localhost:8080/realms/kerp
   datasource:
-    url: jdbc:postgresql://localhost:5432/billing_service_db
+    url: jdbc:postgresql://localhost:5432/billing_db
     username: ${DB_USER}
-    password: "Mes2021**"
+    password: "postgres"
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -30,8 +30,8 @@ spring:
     database:
       download-path: /api/billing/documents/
 
-  Kafka:
-    bootstrap-servers: localhost:9092
+  kafka:
+    bootstrap-servers: localhost:29092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
