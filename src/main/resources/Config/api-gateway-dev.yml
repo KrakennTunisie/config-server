@@ -1,13 +1,10 @@
-#spring:
-#  cloud:
-#    gateway:
-#      default-filters:
-#        - TokenRelay
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          issuer-uri: http://localhost:8080/realms/kerp
+spring:
+  cloud:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/kerp
 keycloak:
   issuer-uri: http://localhost:8080/realms/kerp
 logging:

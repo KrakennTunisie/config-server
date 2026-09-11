@@ -1,9 +1,9 @@
-#spring:
-  #security:
-    #oauth2:
-     # resourceserver:
-        #jwt:
-          #issuer-uri: http://keycloak:8080/realms/kerp
+spring:
+  security:
+    oauth2:
+     resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_URL}
 keycloak:
   issuer-uri: ${KEYCLOAK_URL}
 logging:
