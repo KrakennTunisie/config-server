@@ -16,7 +16,7 @@ spring:
     validate-on-migrate: true
     out-of-order: false
 
-  Kafka:
+  kafka:
     bootstrap-servers: localhost:29092
 
     producer:
@@ -39,7 +39,6 @@ spring:
           notificationEvent:com.kerp.notificationservice.domain.records.NotificationEvent,
           mailRequest:com.kerp.notificationservice.domain.model.MailJob
 
-
   rabbitmq:
     host: localhost
     port: 5672
@@ -57,9 +56,7 @@ feign:
         read-timeout: 5000
         logger-level: basic
 
-
 logging:
   level:
     org.springframework.web: DEBUG
     root: info
-
